@@ -11,13 +11,43 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,  // Hide debug banner
-      title: 'Flutter Demo',  // Set app title
-      theme: ThemeData(  // Configure app theme
-        colorScheme: ColorScheme.fromSwatch().copyWith(primary: const Color(0xFF883007)),  // Set primary color
-        useMaterial3: true,  // Enable Material 3 design elements
+      debugShowCheckedModeBanner: false,
+      title: 'MUSYOKIs To Do List',
+      theme: ThemeData(
+        colorScheme:
+            ColorScheme.fromSwatch().copyWith(primary: const Color(0xFF883007)),
+        useMaterial3: true,
       ),
-      home: TasksScreen(),  // Set home screen to TasksScreen
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'MUSYOKIs To Do List',
+            style: TextStyle(
+              fontStyle: FontStyle.italic, // Make the title italic
+              fontWeight: FontWeight.bold, // Make the title bold
+            ),
+          ),
+        ),
+        body: const Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: TasksScreen(),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text(
+                'Copyright © 2024 | MUSYOKI Peter: 1947 - 1957 A LIFE OF ALTERNATIVES',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

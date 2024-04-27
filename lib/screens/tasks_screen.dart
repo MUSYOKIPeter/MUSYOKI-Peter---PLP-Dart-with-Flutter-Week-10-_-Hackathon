@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/model/todo.dart'; // Import ToDo model class
 import 'package:todolist/widgets/todo_items.dart'; // Import ToDoItem widget
-
 // Enumeration to represent different task categories
 enum TaskCategory {
   all,
@@ -68,20 +67,20 @@ class _TasksScreenState extends State<TasksScreen> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: Text('Add New Task'),
+          title: const Text('Add New Task'),
           content: TextField(
             autofocus: true,
             onChanged: (value) {
               newTaskText = value; // Update newTaskText as the user types
             },
-            decoration: InputDecoration(hintText: 'Enter task...'),
+            decoration: const InputDecoration(hintText: 'Enter task...'),
           ),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(dialogContext); // Close the dialog
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
@@ -89,7 +88,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 _addNewTask(newTaskText);
                 Navigator.pop(dialogContext); // Close the dialog
               },
-              child: Text('Add'),
+              child: const Text('Add'),
             ),
           ],
         );
@@ -133,10 +132,10 @@ class _TasksScreenState extends State<TasksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 35.0),
+              padding: EdgeInsets.only(left: 35.0),
               child: Icon(Icons.assignment),
             ),
             SizedBox(width: 8),
@@ -147,13 +146,13 @@ class _TasksScreenState extends State<TasksScreen> {
           ],
         ),
         backgroundColor: const Color(0xFF883007),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: Drawer(
         elevation: 0,
         child: Column(
           children: [
-            UserAccountsDrawerHeader(
+            const UserAccountsDrawerHeader(
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage("assets/profile.jpeg"),
               ),
@@ -162,25 +161,25 @@ class _TasksScreenState extends State<TasksScreen> {
             ),
             // Drawer menu items for different task categories
             ListTile(
-              title: Text("All Tasks"),
-              leading: Icon(Icons.menu_outlined),
+              title: const Text("All Tasks"),
+              leading: const Icon(Icons.menu_outlined),
               onTap: () => _setSelectedCategory(TaskCategory.all, context),
             ),
             ListTile(
-              title: Text("Completed Tasks"),
-              leading: Icon(Icons.check_box),
+              title: const Text("Completed Tasks"),
+              leading: const Icon(Icons.check_box),
               onTap: () => _setSelectedCategory(TaskCategory.completed, context),
             ),
             ListTile(
-              title: Text("Pending Tasks"),
-              leading: Icon(Icons.incomplete_circle),
+              title: const Text("Pending Tasks"),
+              leading: const Icon(Icons.incomplete_circle),
               onTap: () => _setSelectedCategory(TaskCategory.pending, context),
             ),
-            ListTile(
+            const ListTile(
               title: Text("Help"),
               leading: Icon(Icons.help_center),
             ),
-            ListTile(
+            const ListTile(
               title: Text("Logout"),
               leading: Icon(Icons.logout),
             ),
@@ -193,7 +192,7 @@ class _TasksScreenState extends State<TasksScreen> {
           children: [
             // Search bar for filtering tasks (optional)
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
@@ -202,11 +201,11 @@ class _TasksScreenState extends State<TasksScreen> {
                 onChanged: (keyword) {
                   // Implement search functionality if needed
                 },
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   contentPadding: EdgeInsets.all(0),
                   prefixIcon: Icon(
                     Icons.search,
-                    color: const Color(0xFF272626),
+                    color: Color(0xFF272626),
                     size: 20,
                   ),
                   prefixIconConstraints:
@@ -217,7 +216,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: _foundToDo.length,
@@ -238,7 +237,7 @@ class _TasksScreenState extends State<TasksScreen> {
           _showAddTaskDialog(context);
         },
         tooltip: 'Add New Task',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       backgroundColor: const Color(0xFFCECAB7),
     );
